@@ -1,32 +1,24 @@
-et nocompatible              " required
-filetype off                  " required
+set nocompatible
+filetype off
+execute pathogen#infect()
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
-"
-" alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
+
 Plugin 'gmarik/Vundle.vim'
-"
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-"
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'universal-ctags/ctags'
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'w0rp/ale'
-Plugin 'ervandew/supertab'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-"
-" All of your Plugins must be added before the following line
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'universal-ctags/ctags'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-execute pathogen#infect()
+
 syntax on
 filetype plugin indent on
 
@@ -43,19 +35,39 @@ set textwidth=119
 set ruler
 set nu
 set backspace=indent,eol,start
+set nopaste
+set ai
+set noswapfile
+set wildmenu
+set title
+
 
 highlight LineNr ctermfg=grey
 
-let g:ale_linters = { 'python': ['flake8', 'pylint']}
-let g:ale_python_flake8_options = '--ignore=E501
-let g:ale_python_pylint_options = '--max-line-length=119'
-
-
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
 " Setting space as leader
 map <Space> <leader>
 
-" CtrlP mapping
-nmap <leader>p :CtrlP<cr>
+noremap <leader>p i import pdb; pdb.set_trace()<Esc>
+
+" Allowing vim access to global buffer for copy/pasting
+set clipboard+=unnamed
+set pastetoggle=<leader>
+
+" Remove trailing whitespace from certain filetypes
+autocmd BufWritePre *.py %s/\s\+$//e
+autocmd BufWritePre *.txt %s/\s\+$//e
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" w0rp/ale
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = { 'python': ['flake8', 'pylint']}
+let g:ale_python_flake8_options = '--ignore=E501'
+let g:ale_python_pylint_options = '--max-line-length=119 --disable=C0103'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gutentags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%{gutentags#statusline()}  " Inform when ctags are being generated
+let g:gutentags_cache_dir = '~/.vim/ctags_dir'
