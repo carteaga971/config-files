@@ -118,6 +118,8 @@ alias okta_prd="okta-personal-token get prod/sundial-production | pbcopy"
 alias okta_val="okta-personal-token get prod/Tempus-VAL | pbcopy"
 alias okta_bet="okta-personal-token get preview/sundial-staging | pbcopy"
 alias okta_alp="okta-personal-token get preview/Tempus-ALP | pbcopy"
+export AWS_PROFILE=tempusdevops
+export TFENV_ARCH=amd64
 
 # Teleport dds db
 alias alp-dds-db="tsh db login --db-name=data-delivery-db --db-user=alp-rw@tempus-teleport.iam alp-data-delivery-db-bee80dbf && tsh db connect alp-data-delivery-db-bee80dbf"
@@ -126,4 +128,4 @@ alias bet-dds-db="tsh db login --db-name=data-delivery-db --db-user=bet-ro@tempu
 # GCP Auth
 alias default-auth="gcloud auth application-default login"
 alias auth="gcloud auth login"
-alis config='/usr/bin/git --git-dir=/Users/cesar.arteaga/.cfg --work-tree=/Users/cesar.arteaga'
+alias config='/usr/bin/git --git-dir=/Users/cesar.arteaga/.cfg --work-tree=/Users/cesar.arteaga'
