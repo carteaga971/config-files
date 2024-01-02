@@ -1,13 +1,3 @@
-call plug#begin()
-Plug 'dense-analysis/ale'
-Plug 'davidhalter/jedi-vim'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'ambv/black'
-call plug#end()
-
-
-
-
 set nocompatible
 syntax on
 
@@ -38,7 +28,7 @@ map <Space> <leader>
 noremap <leader>p i import pdb; pdb.set_trace()<Esc>
 
 " Allowing vim access to global buffer for copy/pasting
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " w0rp/ale

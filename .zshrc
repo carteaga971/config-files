@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.config/tempus-app-manager/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.config/tempus-app-manager/bin:/usr/local/bin:/usr/local/bin/ldg/:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -93,6 +93,7 @@ alias python=python3
 alias repos="cd ~/Repos"
 alias activate="source ./venv/bin/activate"
 alias vim=nvim
+alias gpo="git push origin"
 
 
 #######################
@@ -103,8 +104,11 @@ alias vim=nvim
 export JIRA_TOKEN=ATATT3xFfGF0gGDPVcH8WhHKo7H31wfRy6qiX2FGMSLvhr2CG_hRcZVmLBfA0AwcoADGF8MeCubHE4lQlQ2MpyLzzcN8mCxsMwqQeyl-_eiUp61jKYInsc8q-Pi0thTnZ4rOhygRahXJdHvi-mjtPL7PnKRXA_wmBLs0aRW4duyxWAG-uoN2ZLo=12CE9E7B
 
 # Shorcuts to Tempus folders
-alias dds="cd ~/Repos/data-delivery-service"
-alias dm="~/Repos/n-delivery-manager"
+alias dds="cd ~/Repos/data-delivery-service && source ./venv/bin/activate"
+alias dm="cd ~/Repos/n-delivery-manager && source ./venv/bin/activate"
+alias deid="cd ~/Repos/expert-deidentification"
+alias iac="cd ~/Repos/lens-iac"
+alias art="cd ~/Repos/lens-artifact-manager-service && source ./venv/bin/activate"
 export N_DM_HOME="~/Repos/n-delivery-manager"
 
 # PR
@@ -124,8 +128,14 @@ export TFENV_ARCH=amd64
 # Teleport dds db
 alias alp-dds-db="tsh db login --db-name=data-delivery-db --db-user=alp-rw@tempus-teleport.iam alp-data-delivery-db-bee80dbf && tsh db connect alp-data-delivery-db-bee80dbf"
 alias bet-dds-db="tsh db login --db-name=data-delivery-db --db-user=bet-ro@tempus-teleport.iam bet-data-delivery-db-107a1fa8 && tsh db connect bet-data-delivery-db-107a1fa8"
+alias val-dds-db="tsh db login --db-name=data-delivery-db --db-user=val-ro@tempus-teleport.iam val-data-delivery-db-185f181c && tsh db connect val-data-delivery-db-185f181c"
 
 # GCP Auth
 alias default-auth="gcloud auth application-default login"
 alias auth="gcloud auth login"
 alias config='/usr/bin/git --git-dir=/Users/cesar.arteaga/.cfg --work-tree=/Users/cesar.arteaga'
+
+# AWS Configs
+alias aws_cred="ctv && AWS_PROFILE=tempusdevops" 
+# Run gcloud login
+zsh /Users/cesar.arteaga/Scripts/check_gcp_creds.sh
