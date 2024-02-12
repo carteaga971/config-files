@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.config/tempus-app-manager/bin:/usr/local/bin:/usr/local/bin/ldg/:$PATH"
+export PATH="$HOME/.config/tempus-app-manager/bin:/usr/local/bin:/usr/local/bin/ldg/:/Users/cesar.arteaga/.local/bin:/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -109,7 +109,8 @@ alias dm="cd ~/Repos/n-delivery-manager && source ./venv/bin/activate"
 alias deid="cd ~/Repos/expert-deidentification"
 alias iac="cd ~/Repos/lens-iac"
 alias art="cd ~/Repos/lens-artifact-manager-service && source ./venv/bin/activate"
-export N_DM_HOME="~/Repos/n-delivery-manager"
+alias art_sdk="cd ~/Repos/lens-artifact-manager-sdk-python"
+alias art_cli="cd ~/Repos/lens-artifact-manager-cli"
 
 # PR
 alias reset_develop="git checkout release && git pull --ff-only && git branch -D develop && git checkout -b develop && git branch --set-upstream-to=origin/develop develop"
@@ -129,6 +130,10 @@ export TFENV_ARCH=amd64
 alias alp-dds-db="tsh db login --db-name=data-delivery-db --db-user=alp-rw@tempus-teleport.iam alp-data-delivery-db-bee80dbf && tsh db connect alp-data-delivery-db-bee80dbf"
 alias bet-dds-db="tsh db login --db-name=data-delivery-db --db-user=bet-ro@tempus-teleport.iam bet-data-delivery-db-107a1fa8 && tsh db connect bet-data-delivery-db-107a1fa8"
 alias val-dds-db="tsh db login --db-name=data-delivery-db --db-user=val-ro@tempus-teleport.iam val-data-delivery-db-185f181c && tsh db connect val-data-delivery-db-185f181c"
+alias prd-dds-db="tsh db login --db-name=data-delivery-db --db-user=prd-ro@tempus-teleport.iam prd-data-delivery-db-190e7848 && tsh db connect prd-data-delivery-db-190e7848"
+
+# Teleport DM DB 
+alias prd-optics-db="tsh db login --db-name=optics --db-user=prd-ro@tempus-teleport.iam prd-delivery-manager-c6e9a6ca && tsh db connect prd-delivery-manager-c6e9a6ca"
 
 # GCP Auth
 alias default-auth="gcloud auth application-default login"
